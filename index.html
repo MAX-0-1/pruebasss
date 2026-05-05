@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorando el Mundo Cuántico</title>
+    <style>
+        :root {
+            --primary-color: #6200ea;
+            --accent-color: #00e5ff;
+            --bg-color: #0a0a12;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: #ff4081;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1-fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Física Cuántica</h1>
+    <p>El fascinante estudio de lo infinitamente pequeño</p>
+</header>
+
+<div class="container">
+    <section id="introduccion">
+        <h2>¿Qué es la Mecánica Cuántica?</h2>
+        <p>La física cuántica es la rama de la ciencia que estudia la naturaleza a escalas espaciales muy pequeñas. A diferencia de la física clásica, donde las cosas son predecibles, en el mundo cuántico las partículas pueden estar en varios estados a la vez hasta que las observamos.</p>
+    </section>
+
+    <section id="conceptos-clave">
+        <h2>Pilares Fundamentales</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Superposición</h3>
+                <p>Una partícula puede existir en múltiples estados o posiciones simultáneamente. El ejemplo más famoso es el <strong>Gato de Schrödinger</strong>.</p>
+            </div>
+            <div class="card">
+                <h3>Entrelazamiento</h3>
+                <p>Dos partículas pueden conectarse de tal forma que lo que le pase a una afecta instantáneamente a la otra, sin importar la distancia.</p>
+            </div>
+            <div class="card">
+                <h3>Dualidad Onda-Partícula</h3>
+                <p>Objetos cuánticos como los electrones o fotones se comportan como partículas sólidas y como ondas de energía al mismo tiempo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <h2>¿Por qué es importante?</h2>
+        <p>Aunque parece ciencia ficción, la física cuántica es la base de la tecnología moderna que usas a diario. Sin ella no existirían:</p>
+        <ul>
+            <li>Los <span class="highlight">Transistores</span> (cerebros de computadoras y móviles).</li>
+            <li>La tecnología <span class="highlight">Láser</span>.</li>
+            <li>Las máquinas de <span class="highlight">Resonancia Magnética</span>.</li>
+            <li>Los futuros ordenadores cuánticos.</li>
+        </ul>
+    </section>
+
+    <section id="incertidumbre">
+        <h2>Principio de Incertidumbre</h2>
+        <p>Postulado por <strong>Werner Heisenberg</strong>, establece que es imposible conocer simultáneamente y con precisión exacta la posición y el momento (velocidad) de una partícula. Cuanto más sabemos de una, menos sabemos de la otra.</p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Guía de Ciencias Cuánticas - Diseñado para mentes curiosas</p>
+</footer>
+
+</body>
+</html>
