@@ -3,142 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorando el Mundo Cuántico</title>
+    <title>Shoes Master | Premium Footwear</title>
+    <!-- Google Fonts para mayor elegancia -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6200ea;
-            --accent-color: #00e5ff;
-            --bg-color: #0a0a12;
-            --text-color: #e0e0e0;
+            --primary: #2d3436;
+            --accent: #d63031;
+            --text-light: #636e72;
+            --bg: #fdfdfd;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+            overflow-x: hidden;
         }
 
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 4rem 1rem;
+        /* Navegación con Glassmorphism */
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 8%;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li { margin-left: 30px; }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover::after { width: 100%; }
+
+        /* Hero con Parallax suave */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
             text-align: center;
-            border-bottom: 2px solid var(--primary-color);
         }
 
-        h1 {
-            color: var(--accent-color);
-            font-size: 3rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 4px;
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
         }
 
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        /* Animaciones base */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Secciones */
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 5%;
         }
 
-        section {
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        h2 {
-            color: var(--accent-color);
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
 
-        .highlight {
-            color: #ff4081;
-            font-weight: bold;
-        }
-
+        /* Cards Elegantes */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1-fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        footer {
+        .card-img-container {
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 25px;
             text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-            color: #888;
+        }
+
+        .btn-shop {
+            margin-top: 15px;
+            padding: 10px 25px;
+            border: 2px solid var(--primary);
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-shop:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #bdc3c7;
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Simplificación para móvil */
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Física Cuántica</h1>
-    <p>El fascinante estudio de lo infinitamente pequeño</p>
-</header>
+    <nav id="navbar">
+        <div class="logo">SHOES MASTER</div>
+        <ul>
+            <li><a href="#">Colección</a></li>
+            <li><a href="#">Hombre</a></li>
+            <li><a href="#">Mujer</a></li>
+            <li><a href="#">Nuestra Historia</a></li>
+        </ul>
+    </nav>
 
-<div class="container">
-    <section id="introduccion">
-        <h2>¿Qué es la Mecánica Cuántica?</h2>
-        <p>La física cuántica es la rama de la ciencia que estudia la naturaleza a escalas espaciales muy pequeñas. A diferencia de la física clásica, donde las cosas son predecibles, en el mundo cuántico las partículas pueden estar en varios estados a la vez hasta que las observamos.</p>
-    </section>
+    <header class="hero">
+        <h1>PASOS QUE INSPIRAN</h1>
+        <p>La excelencia en cada detalle del calzado.</p>
+    </header>
 
-    <section id="conceptos-clave">
-        <h2>Pilares Fundamentales</h2>
+    <div class="container">
+        <section class="section-title reveal">
+            <h2>Nuevos Arribos</h2>
+            <p>Diseño contemporáneo para el ritmo de hoy.</p>
+        </section>
+
         <div class="grid">
-            <div class="card">
-                <h3>Superposición</h3>
-                <p>Una partícula puede existir en múltiples estados o posiciones simultáneamente. El ejemplo más famoso es el <strong>Gato de Schrödinger</strong>.</p>
+            <div class="card reveal">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=687" alt="Sneakers">
+                </div>
+                <div class="card-body">
+                    <h3>Urban Pro White</h3>
+                    <p>Minimalismo y confort total.</p>
+                    <button class="btn-shop">VER DETALLE</button>
+                </div>
             </div>
-            <div class="card">
-                <h3>Entrelazamiento</h3>
-                <p>Dos partículas pueden conectarse de tal forma que lo que le pase a una afecta instantáneamente a la otra, sin importar la distancia.</p>
+
+            <div class="card reveal">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=880" alt="Heels">
+                </div>
+                <div class="card-body">
+                    <h3>Velvet Night</h3>
+                    <p>Elegancia para tus eventos.</p>
+                    <button class="btn-shop">VER DETALLE</button>
+                </div>
             </div>
-            <div class="card">
-                <h3>Dualidad Onda-Partícula</h3>
-                <p>Objetos cuánticos como los electrones o fotones se comportan como partículas sólidas y como ondas de energía al mismo tiempo.</p>
+
+            <div class="card reveal">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=765" alt="Classic">
+                </div>
+                <div class="card-body">
+                    <h3>Oxford Heritage</h3>
+                    <p>Cuero genuino artesanal.</p>
+                    <button class="btn-shop">VER DETALLE</button>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="importancia">
-        <h2>¿Por qué es importante?</h2>
-        <p>Aunque parece ciencia ficción, la física cuántica es la base de la tecnología moderna que usas a diario. Sin ella no existirían:</p>
-        <ul>
-            <li>Los <span class="highlight">Transistores</span> (cerebros de computadoras y móviles).</li>
-            <li>La tecnología <span class="highlight">Láser</span>.</li>
-            <li>Las máquinas de <span class="highlight">Resonancia Magnética</span>.</li>
-            <li>Los futuros ordenadores cuánticos.</li>
-        </ul>
-    </section>
+    <footer>
+        <p>&copy; 2026 SHOES MASTER | DISEÑO PREMIUM</p>
+    </footer>
 
-    <section id="incertidumbre">
-        <h2>Principio de Incertidumbre</h2>
-        <p>Postulado por <strong>Werner Heisenberg</strong>, establece que es imposible conocer simultáneamente y con precisión exacta la posición y el momento (velocidad) de una partícula. Cuanto más sabemos de una, menos sabemos de la otra.</p>
-    </section>
-</div>
+    <script>
+        // 1. Cambio de estilo del Navbar al hacer Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
 
-<footer>
-    <p>&copy; 2026 Guía de Ciencias Cuánticas - Diseñado para mentes curiosas<br>Hola Mundo</p>
-</footer>
+        // 2. Animación de "Revelar" elementos al hacer Scroll (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        };
 
+        const observer = new IntersectionObserver(revealCallback, {
+            threshold: 0.15 // Se activa cuando el 15% del elemento es visible
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // 3. Efecto de clic interactivo en las cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.95)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
